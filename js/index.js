@@ -493,54 +493,54 @@ let repasswordInputTouched = false;
 function inputsValidation() {
     if (nameInputTouched) {
         if (nameValidation()) {
-            document.getElementById("nameAlert").classList.replace("d-block", "d-none")
+            document.querySelector("#nameAlert").classList.replace("d-block", "d-none")
 
         } else {
-            document.getElementById("nameAlert").classList.replace("d-none", "d-block")
+            document.querySelector("#nameAlert").classList.replace("d-none", "d-block")
 
         }
     }
     if (emailInputTouched) {
 
         if (emailValidation()) {
-            document.getElementById("emailAlert").classList.replace("d-block", "d-none")
+            document.querySelector("#emailAlert").classList.replace("d-block", "d-none")
         } else {
-            document.getElementById("emailAlert").classList.replace("d-none", "d-block")
+            document.querySelector("#emailAlert").classList.replace("d-none", "d-block")
 
         }
     }
 
     if (phoneInputTouched) {
         if (phoneValidation()) {
-            document.getElementById("phoneAlert").classList.replace("d-block", "d-none")
+            document.querySelector("#phoneAlert").classList.replace("d-block", "d-none")
         } else {
-            document.getElementById("phoneAlert").classList.replace("d-none", "d-block")
+            document.querySelector("#phoneAlert").classList.replace("d-none", "d-block")
 
         }
     }
 
     if (ageInputTouched) {
         if (ageValidation()) {
-            document.getElementById("ageAlert").classList.replace("d-block", "d-none")
+            document.querySelector("ageAlert").classList.replace("d-block", "d-none")
         } else {
-            document.getElementById("ageAlert").classList.replace("d-none", "d-block")
+            document.querySelector("ageAlert").classList.replace("d-none", "d-block")
 
         }
     }
 
     if (passwordInputTouched) {
         if (passwordValidation()) {
-            document.getElementById("passwordAlert").classList.replace("d-block", "d-none")
+            document.querySelector("#passwordAlert").classList.replace("d-block", "d-none")
         } else {
-            document.getElementById("passwordAlert").classList.replace("d-none", "d-block")
+            document.querySelector("#passwordAlert").classList.replace("d-none", "d-block")
 
         }
     }
     if (repasswordInputTouched) {
         if (repasswordValidation()) {
-            document.getElementById("repasswordAlert").classList.replace("d-block", "d-none")
+            document.querySelector("#repasswordAlert").classList.replace("d-block", "d-none")
         } else {
-            document.getElementById("repasswordAlert").classList.replace("d-none", "d-block")
+            document.querySelector("#repasswordAlert").classList.replace("d-none", "d-block")
 
         }
     }
@@ -559,26 +559,26 @@ function inputsValidation() {
 }
 
 function nameValidation() {
-    return (/^[a-zA-Z ]+$/.test(document.getElementById("nameInput").value))
+    return (/^[a-zA-Z ]+$/.test(document.querySelector("#nameInput").value))
 }
 
 function emailValidation() {
-    return (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("emailInput").value))
+    return (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.querySelector("#emailInput").value))
 }
 
 function phoneValidation() {
-    return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(document.getElementById("phoneInput").value))
+    return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(document.querySelector("phoneInput").value))
 }
 
 function ageValidation() {
-    return (/^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(document.getElementById("ageInput").value))
+    return (/^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(document.querySelector("ageInput").value))
 }
 
 function passwordValidation() {
-    return (/^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(document.getElementById("passwordInput").value))
+    return (/^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(document.querySelector("passwordInput").value))
 }
 
 function repasswordValidation() {
-    return document.getElementById("repasswordInput").value == document.getElementById("passwordInput").value
+    return document.querySelector("repasswordInput").value == document.querySelector("passwordInput").value
 }
 
