@@ -1,5 +1,13 @@
+var loadingScreen = $(".loading-screen");
+let rowData = document.querySelector("#rowData");
+let searchContainer = document.querySelector("#searchContainer");
+let submitBtn;
+const nameRegex = /^[a-zA-Z ]+$/;
+const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+const ageRegex = /^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/;
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
 
-    
 
 $(document).ready(function () {
 
@@ -32,10 +40,7 @@ $(document).ready(function () {
         closeSideNav()
     })
 
-    var loadingScreen = $(".loading-screen");
-    let rowData = document.querySelector("#rowData");
-    let searchContainer = document.querySelector("#searchContainer");
-    let submitBtn;
+   
 
     searchByName("").then(function () {
         loadingScreen.fadeOut(500, function () {
@@ -381,29 +386,29 @@ async function searchByFLetter(term) {
     closeSideNav();
     rowData.innerHTML = '';
     // innerLoadingScreen.style.display = 'block';
-  
+
     try {
-      if (term === '') term = 'a';
-  
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+        if (term === '') term = 'a';
+
+        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
 
-  
-      const data = 
-      await response.json();
-      const meals =
-       data.meals || [];
-  
-      displayMeals(meals);
+
+        const data =
+            await response.json();
+        const meals =
+            data.meals || [];
+
+        displayMeals(meals);
     } catch (error) {
-      console.error('An error occurred:', error);
+        console.error('An error occurred:', error);
     } finally {
-    //   innerLoadingScreen.style.display = 'none';
+        //   innerLoadingScreen.style.display = 'none';
     }
-  }
+}
 
 function showContacts() {
     rowData.innerHTML = `<div class="contact min-vh-100 d-flex justify-content-center align-items-center">
@@ -557,28 +562,26 @@ function inputsValidation() {
         submitBtn.setAttribute("disabled", true)
     }
 }
-
 function nameValidation() {
-    return (/^[a-zA-Z ]+$/.test(document.getElementById("nameInput").value))
+    return nameRegex.test(document.getElementById("nameInput").value);
 }
 
 function emailValidation() {
-    return (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("emailInput").value))
+    return emailRegex.test(document.getElementById("emailInput").value);
 }
 
 function phoneValidation() {
-    return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(document.getElementById("phoneInput").value))
+    return phoneRegex.test(document.getElementById("phoneInput").value);
 }
 
 function ageValidation() {
-    return (/^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(document.getElementById("ageInput").value))
+    return ageRegex.test(document.getElementById("ageInput").value);
 }
 
 function passwordValidation() {
-    return (/^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(document.getElementById("passwordInput").value))
+    return passwordRegex.test(document.getElementById("passwordInput").value);
 }
 
 function repasswordValidation() {
-    return document.getElementById("repasswordInput").value == document.getElementById("passwordInput").value
+    return document.getElementById("repasswordInput").value === document.getElementById("passwordInput").value;
 }
-
